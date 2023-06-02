@@ -1,11 +1,17 @@
-<h1>Products</h1>
+<h1>Products details </h1>
 <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="header">
         <tr>
-            <th>Code</th>
+            <th>Id</th>
             <th>Name</th>
+            <th>Product Id</th>
+            <th>Price</th>
+            <th>Discount </th>
             <th>Category</th>
+            <th>Weight</th>
             <th>Quantity</th>
+
+
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>

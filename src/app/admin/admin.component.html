@@ -1,2 +1,84 @@
 
+<div class="adminRegister-button">
+    <button (click)="openAdminForm()">Register</button>
+</div>
 
+ <p-table [value]="admin" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>Id Number</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Date Of Birth</th>
+            <th>Password</th>
+            
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-admin>
+        <tr>
+            <td>{{admin.id}}</td>
+        <td>{{admin.firstName}}</td>
+        <td>{{admin.lastName}}</td>
+        <td>{{admin.idNumber}}</td>
+        <td>{{admin.email}}</td>
+        <td>{{admin.phoneNumber}}</td>
+        <td>admin.dateOfBirth</td>
+        <td>{{admin.password}}</td>
+
+        <!-- <button (click)="editCustomerForm(customer)" class="customerEdit">Edit</button>
+    <button (click)="deleteCustomerById(customer.id)" class="customer-delete">Delete</button> -->
+        </tr>
+
+        
+    </ng-template>
+
+    
+</p-table> 
+
+
+<dialog id="adminDialog">
+
+    <form [formGroup]="adminForm" (ngSubmit)="submit()">
+        
+        <p class="fill-details">Fill in all necessary information.</p>
+
+        <div class="row">
+
+            <input formControlName="firstName" placeholder="First Name" name="firstName">
+            <span *ngIf="adminForm.controls['firstName']?.errors" class="required">*</span>
+
+
+            <input formControlName="lastName" placeholder="Last Name" name="lastName">
+            <span *ngIf="adminForm.controls['lastName']?.errors" class="required">*</span>
+
+            <input formControlName="idNumber" placeholder="Id Number" name="idNumber">
+            <span *ngIf="adminForm.controls['idNumber']?.errors" class="required">*</span>
+
+            <input formControlName="email" placeholder="Email" name="email">
+            <span *ngIf="adminForm.controls['email']?.errors" class="required">*</span>
+        </div>
+        <div class="row">
+
+            <input formControlName="phoneNumber" placeholder="Phone Number" name="phoneNumber">
+            <span *ngIf="adminForm.controls['phoneNumber']?.errors" class="required">*</span>
+
+            <input formControlName="dateOfBirth" placeholder="Date Of Birth" name="dateOfBirth">
+            <span *ngIf="adminForm.controls['dateOfBirth']?.errors" class="required">*</span>
+
+            <!-- <input formControlName="password" placeholder="Password" name="password"> -->
+            <p-password formControlName="password" [toggleMask]="true"></p-password>
+
+            <!-- <span *ngIf="customerForm.controls['password']?.errors" class="required">*</span> -->
+        </div>
+
+        <button (click)="submit()" class="submit">Submit</button>
+        <button (click)="closeAdminFrom()" class="closeForm">Cancel</button>
+        
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    </form>
+
+</dialog>
