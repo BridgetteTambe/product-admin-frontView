@@ -4,21 +4,28 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Product Id</th>
+            <th>Admin Id</th>
             <th>Price</th>
             <th>Discount </th>
             <th>Category</th>
             <th>Weight</th>
             <th>Quantity</th>
+          <th>Total</th>
 
 
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr [ngClass]="{'row-accessories': product.category === 'Accessories'}">
-            <td>{{product.code}}</td>
+            <td>{{product.id}}</td>
             <td>{{product.name}}</td>
-            <td>{{product.category}}</td>
+            <td>{{product.adminId}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.discount}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.weight}}</td>
+          <td>{{product.quantity}}</td>
+<!--          <td>{{product.total}}</td>-->
             <td>
                 <div [ngClass]="{'outofstock': product.quantity === 0, 'lowstock': (product.quantity > 0 && product.quantity < 10),'instock': product.quantity > 10}">
                     {{product.quantity}}
